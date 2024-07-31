@@ -33,7 +33,7 @@ spec:
             - containerPort: 80
           env:
             - name: WORDPRESS_DB_HOST
-              value: http://34.118.231.85
+              value: 34.118.231.85
             - name : WORDPRESS_DB_USER 
               value: wordpress_user 
             - name: WORDPRESS_DB_PASSWORD
