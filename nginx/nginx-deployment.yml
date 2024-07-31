@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
-  namespace: nginx-proxy
+  namespace: nginx
 spec:
   type: LoadBalancer
   ports:
@@ -40,7 +40,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: nginx-proxy
+  namespace: nginx
 spec:
   replicas: 1
   selector:
