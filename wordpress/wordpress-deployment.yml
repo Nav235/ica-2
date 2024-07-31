@@ -1,7 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  namespace: wordpress
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: wordpress
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-deployment
   namespace: wordpress
 spec:
   replicas: 1
@@ -14,16 +27,14 @@ spec:
         app: wordpress
     spec:
       containers:
-      - name: wordpress
-        image: wordpress:latest
-        env:
-        - name: WORDPRESS_DB_HOST
-          value: "mariadb.mariadb.svc.cluster.local:3306"
-        - name: WORDPRESS_DB_USER
-          value: "wordpress"
-        - name: WORDPRESS_DB_PASSWORD
-          value: "password"
-        - name: WORDPRESS_DB_NAME
-          value: "wordpress"
-        ports:
-        - containerPort: 80
+        - name: wordpress
+          image: wordpress:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: WORDPRESS_DB_HOST
+              value: mariadb-service.mariadb.svc.cluster.local:3306
+            - name : WORDPRESS_DB_USER 
+              value: wordpress_user 
+            - name: WORDPRESS_DB_PASSWORD
+              value: your_db_password
