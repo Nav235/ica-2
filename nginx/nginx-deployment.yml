@@ -10,7 +10,7 @@ data:
         server_name localhost;
 
         location / {
-            proxy_pass http://wordpress-service.wordpress-app.svc.cluster.local;
+            proxy_pass http://wordpress-service.wordpress.svc.cluster.local;
            # proxy_pass http://10.112.86.62;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
